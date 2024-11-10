@@ -1,0 +1,7 @@
+.buttonDropDown > svg {
+  display: none;
+}
+
+.itemDropDown > span:has(svg) {
+  display: none;
+}

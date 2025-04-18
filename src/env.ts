@@ -1,5 +1,5 @@
 import { createEnv } from "@t3-oss/env-nextjs";
-import { z } from "zod";
+import zod from "zod";
 
 export const env = createEnv({
   /**
@@ -7,8 +7,8 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
-    DATABASE_URL: z.string().url(),
-    NODE_ENV: z
+    DATABASE_URL: zod.string().url(),
+    NODE_ENV: zod
       .enum(["development", "test", "production"])
       .default("development"),
   },
@@ -19,7 +19,7 @@ export const env = createEnv({
    * `NEXT_PUBLIC_`.
    */
   client: {
-    // NEXT_PUBLIC_CLIENTVAR: z.string(),
+    // NEXT_PUBLIC_CLIENTVAR: zod.string(),
   },
 
   /**
@@ -37,7 +37,7 @@ export const env = createEnv({
    */
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
   /**
-   * Makes it so that empty strings are treated as undefined. `SOME_VAR: z.string()` and
+   * Makes it so that empty strings are treated as undefined. `SOME_VAR: zod.string()` and
    * `SOME_VAR=''` will throw an error.
    */
   emptyStringAsUndefined: true,

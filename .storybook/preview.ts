@@ -1,4 +1,7 @@
-import type { Preview } from '@storybook/react'
+import type { Preview, ReactRenderer } from '@storybook/react'
+import { withThemeByClassName } from '@storybook/addon-themes'
+
+import '../src/styles/globals.css'
 
 const preview: Preview = {
   parameters: {
@@ -8,7 +11,16 @@ const preview: Preview = {
         date: /Date$/i
       }
     }
-  }
+  },
+  decorators: [
+    withThemeByClassName<ReactRenderer>({
+      themes: {
+        light: '',
+        dark: 'dark'
+      },
+      defaultTheme: 'light'
+    })
+  ]
 }
 
 export default preview

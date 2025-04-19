@@ -1,6 +1,7 @@
-import * as React from 'react'
+import { Children, cloneElement, isValidElement, type ReactNode, type ReactElement } from 'react'
 import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { Loader2 } from 'lucide-react'
 
 import { cn } from '~/utils'
 
@@ -32,24 +33,74 @@ const buttonVariants = cva(
   }
 )
 
+type ChildWithClassName = {
+  className?: string
+  children?: ReactNode
+}
+
 function Button({
   className,
   variant,
   size,
+  children,
+  loading = false,
   asChild = false,
   ...props
 }: React.ComponentProps<'button'> &
   VariantProps<typeof buttonVariants> & {
+    loading?: boolean
     asChild?: boolean
   }) {
   const Comp = asChild ? Slot : 'button'
 
+  const sharedProps = {
+    ...props,
+    'data-slot': 'button',
+    className: cn(buttonVariants({ variant, size, className })),
+    disabled: loading || props.disabled
+  }
+
+  // Custom logic for loading state & working with asChild
+  const isDefault = variant === 'default' || variant === undefined
+  const isDefaultLoading = isDefault && loading
+  if (asChild) {
+    const onlyChild = Children.only(children)
+    if (isValidElement(onlyChild)) {
+      const onlyChildElement = onlyChild as ReactElement<ChildWithClassName>
+
+      const newChildren = cloneElement(onlyChildElement, {
+        disabled: loading,
+        className: [className, onlyChildElement.props.className].filter(Boolean).join(' '),
+        ...props,
+        children: (
+          <>
+            {isDefaultLoading && <Loader2 className="animate-spin" />}
+            {onlyChildElement.props.children}
+          </>
+        )
+      })
+
+      return (
+        <Comp
+          {...sharedProps}
+          className={cn(
+            sharedProps.className,
+            sharedProps.disabled && 'pointer-events-none cursor-default opacity-50'
+          )}
+        >
+          {newChildren}
+        </Comp>
+      )
+    }
+
+    throw new Error('Button with asChild must have a single valid React element child.')
+  }
+
   return (
-    <Comp
-      data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
-      {...props}
-    />
+    <Comp {...sharedProps}>
+      {isDefaultLoading && <Loader2 className="animate-spin" />}
+      {children}
+    </Comp>
   )
 }
 

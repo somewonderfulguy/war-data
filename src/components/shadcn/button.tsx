@@ -43,6 +43,7 @@ function Button({
   variant,
   size,
   children,
+  type = 'button',
   loading = false,
   asChild = false,
   ...props
@@ -55,6 +56,7 @@ function Button({
 
   const sharedProps = {
     ...props,
+    type,
     'data-slot': 'button',
     className: cn(buttonVariants({ variant, size, className })),
     disabled: loading || props.disabled

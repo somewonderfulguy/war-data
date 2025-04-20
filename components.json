@@ -15,7 +15,7 @@
     "utils": "~/utils",
     "ui": "~/components/shadcn",
     "lib": "~/utils",
-    "hooks": "~/hooks"
+    "hooks": "~/hooks/shadcn"
   },
   "iconLibrary": "lucide"
 }

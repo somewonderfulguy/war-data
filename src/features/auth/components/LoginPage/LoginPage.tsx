@@ -1,5 +1,7 @@
 import Image from 'next/image'
+
 import { LoginForm } from '../LoginForm'
+
 import img from './assets/donets.jpg'
 
 export const LoginPage = () => {
@@ -15,10 +17,9 @@ export const LoginPage = () => {
           src={img}
           alt="Image"
           className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.8] dark:grayscale-50"
-          priority
           fill
-          sizes="h-full"
-          style={{ objectFit: 'cover' }}
+          placeholder="blur"
+          blurDataURL={img.src}
         />
       </div>
     </div>

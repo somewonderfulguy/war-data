@@ -9,5 +9,8 @@
     "signInWithDiscord": "Sign in with Discord",
     "signInWithGitHub": "Sign in with GitHub",
     "orSeparator": "Or continue with"
+  },
+  "common": {
+    "toggleSidebar": "Toggle sidebar"
   }
 }

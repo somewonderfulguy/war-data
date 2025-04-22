@@ -9,5 +9,8 @@
     "signInWithDiscord": "Увійти через Discord",
     "signInWithGitHub": "Увійти через GitHub",
     "orSeparator": "Або продовжити з"
+  },
+  "common": {
+    "toggleSidebar": "Перемкнути бічну панель"
   }
 }

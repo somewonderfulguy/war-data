@@ -2,6 +2,7 @@
 
 import { useEffect, type ComponentProps, type ReactNode } from 'react'
 import { MenuIcon, XIcon } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
 import { SidebarProvider, useSidebar } from '~/components/shadcn/sidebar'
 import { AppSidebar } from '~/components/AppSidebar'
@@ -9,6 +10,7 @@ import { cn } from '~/utils'
 import { usePathname } from '~/features/localization/navigation'
 
 import { AppControlButton } from './components/AppControlButton'
+import { Tooltip, TooltipContent, TooltipTrigger } from '../shadcn/tooltip'
 
 const hideOnRoutes = ['/login']
 
@@ -27,10 +29,17 @@ const SidebarToggle = () => {
 
   const isOpen = isMobile ? openMobile : open
 
+  const t = useTranslations('common')
+
   return (
-    <AppControlButton onClick={() => toggleSidebar()}>
-      {isOpen ? <XIcon className="h-4 w-4" /> : <MenuIcon className="h-4 w-4" />}
-    </AppControlButton>
+    <Tooltip>
+      <TooltipTrigger>
+        <AppControlButton onClick={() => toggleSidebar()}>
+          {isOpen ? <XIcon className="h-4 w-4" /> : <MenuIcon className="h-4 w-4" />}
+        </AppControlButton>
+      </TooltipTrigger>
+      <TooltipContent>{t('toggleSidebar')}</TooltipContent>
+    </Tooltip>
   )
 }
 

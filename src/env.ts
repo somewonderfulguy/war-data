@@ -8,7 +8,8 @@ export const env = createEnv({
    */
   server: {
     DATABASE_URL: zod.string().url(),
-    NODE_ENV: zod.enum(['development', 'test', 'production']).default('development')
+    NODE_ENV: zod.enum(['development', 'test', 'production']).default('development'),
+    STORYBOOK: zod.boolean().default(false)
   },
 
   /**
@@ -26,7 +27,8 @@ export const env = createEnv({
    */
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
-    NODE_ENV: process.env.NODE_ENV
+    NODE_ENV: process.env.NODE_ENV,
+    STORYBOOK: process.env.STORYBOOK === 'true'
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**

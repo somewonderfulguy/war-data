@@ -1,5 +1,13 @@
 {
   "auth": {
-    "signIn": "Zaloguj się"
+    "signIn": "Zaloguj się",
+    "emailLabel": "E-mail",
+    "emailButton": "Zaloguj się przez e-mail",
+    "signInWithEmail": "Zaloguj się przez e-mail",
+    "signInWithGoogle": "Zaloguj się przez Google",
+    "signInWithMicrosoft": "Zaloguj się przez Microsoft",
+    "signInWithDiscord": "Zaloguj się przez Discord",
+    "signInWithGitHub": "Zaloguj się przez GitHub",
+    "orSeparator": "Lub kontynuuj z"
   }
 }

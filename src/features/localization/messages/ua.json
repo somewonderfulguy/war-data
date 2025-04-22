@@ -1,5 +1,13 @@
 {
   "auth": {
-    "signIn": "Увійти"
+    "signIn": "Увійти",
+    "emailLabel": "Електронна пошта",
+    "emailButton": "Увійти через пошту",
+    "signInWithEmail": "Увійти через пошту",
+    "signInWithGoogle": "Увійти через Google",
+    "signInWithMicrosoft": "Увійти через Microsoft",
+    "signInWithDiscord": "Увійти через Discord",
+    "signInWithGitHub": "Увійти через GitHub",
+    "orSeparator": "Або продовжити з"
   }
 }

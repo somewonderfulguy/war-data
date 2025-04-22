@@ -2,12 +2,12 @@ export const google = (
   <svg
     stroke="currentColor"
     fill="currentColor"
-    stroke-width="0"
+    strokeWidth="0"
     version="1.1"
     x="0px"
     y="0px"
     viewBox="0 0 48 48"
-    enable-background="new 0 0 48 48"
+    enableBackground="new 0 0 48 48"
     height="200px"
     width="200px"
     xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,7 @@ export const discord = (
   <svg
     stroke="currentColor"
     fill="currentColor"
-    stroke-width="0"
+    strokeWidth="0"
     viewBox="0 0 640 512"
     height="200px"
     width="200px"
@@ -63,7 +63,7 @@ export const microsoft = (
   <svg
     stroke="currentColor"
     fill="currentColor"
-    stroke-width="0"
+    strokeWidth="0"
     viewBox="0 0 448 512"
     height="200px"
     width="200px"

@@ -24,6 +24,7 @@ import {
   TooltipProvider,
   TooltipTrigger
 } from '~/components/shadcn/tooltip'
+import { usePathname } from '~/features/localization/navigation'
 
 const SIDEBAR_COOKIE_NAME = 'sidebar_state'
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -60,14 +61,18 @@ function SidebarProvider({
   className,
   style,
   children,
+  cookieIgnorePaths,
   ...props
 }: React.ComponentProps<'div'> & {
   defaultOpen?: boolean
   open?: boolean
   onOpenChange?: (open: boolean) => void
+  cookieIgnorePaths?: string[]
 }) {
   const isMobile = useIsMobile()
   const [openMobile, setOpenMobile] = React.useState(false)
+
+  const pathname = usePathname()
 
   // This is the internal state of the sidebar.
   // We use openProp and setOpenProp for control from outside the component.
@@ -83,9 +88,10 @@ function SidebarProvider({
       }
 
       // This sets the cookie to keep the sidebar state.
+      if (cookieIgnorePaths?.some((path) => pathname.startsWith(path))) return
       document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
     },
-    [setOpenProp, open]
+    [setOpenProp, open, pathname, cookieIgnorePaths]
   )
 
   // Helper to toggle the sidebar.

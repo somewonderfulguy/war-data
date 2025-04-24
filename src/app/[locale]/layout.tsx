@@ -5,6 +5,7 @@ import { Geist } from 'next/font/google'
 import { hasLocale } from 'next-intl'
 import type { ReactNode } from 'react'
 import { notFound } from 'next/navigation'
+import { cookies } from 'next/headers'
 
 import { ApplicationLayout } from '~/components/ApplicationLayout'
 import { Providers } from '~/components/Providers'
@@ -34,11 +35,14 @@ const RootLayout = async ({ children, params }: Props) => {
     notFound()
   }
 
+  const cookieStore = await cookies()
+  const defaultOpen = cookieStore.get('sidebar_state')?.value === 'true'
+
   return (
-    <html lang={locale} className={`${geist.variable} h-full`}>
-      <body className="h-full">
+    <html lang={locale} className={geist.variable} suppressHydrationWarning>
+      <body>
         <Providers>
-          <ApplicationLayout>{children}</ApplicationLayout>
+          <ApplicationLayout defaultOpen={defaultOpen}>{children}</ApplicationLayout>
         </Providers>
       </body>
     </html>

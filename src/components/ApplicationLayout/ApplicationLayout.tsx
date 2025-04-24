@@ -8,21 +8,37 @@ import { SidebarProvider, useSidebar } from '~/components/shadcn/sidebar'
 import { AppSidebar } from '~/components/AppSidebar'
 import { cn } from '~/utils'
 import { usePathname } from '~/features/localization/navigation'
+import { usePrevious } from '~/hooks/usePrevious'
+import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/shadcn/tooltip'
 
 import { AppControlButton } from './components/AppControlButton'
-import { Tooltip, TooltipContent, TooltipTrigger } from '../shadcn/tooltip'
 
 const hideOnRoutes = ['/login']
 
+/** Component that orchestrates sidebar */
 export const ApplicationLayout = ({
   className,
   children,
+  defaultOpen,
   ...props
-}: ComponentProps<typeof SidebarProvider>) => (
-  <SidebarProvider {...props} className={cn('h-full', className)}>
-    <ApplicationLayoutImpl>{children}</ApplicationLayoutImpl>
-  </SidebarProvider>
-)
+}: ComponentProps<typeof SidebarProvider>) => {
+  const pathname = usePathname()
+  const isHideOnRoute = hideOnRoutes.some((route) => pathname.startsWith(route))
+  return (
+    <SidebarProvider
+      {...props}
+      className={cn('h-full', className)}
+      defaultOpen={
+        // if the route is in the hideOnRoutes array, we want to hide the sidebar
+        // otherwise we want to show it based on the localStorage value
+        isHideOnRoute ? false : defaultOpen
+      }
+      cookieIgnorePaths={hideOnRoutes}
+    >
+      <ApplicationLayoutImpl>{children}</ApplicationLayoutImpl>
+    </SidebarProvider>
+  )
+}
 
 const SidebarToggle = () => {
   const { toggleSidebar, open, openMobile, isMobile } = useSidebar()
@@ -33,8 +49,8 @@ const SidebarToggle = () => {
 
   return (
     <Tooltip>
-      <TooltipTrigger>
-        <AppControlButton onClick={() => toggleSidebar()}>
+      <TooltipTrigger asChild>
+        <AppControlButton onClick={toggleSidebar}>
           {isOpen ? <XIcon className="h-4 w-4" /> : <MenuIcon className="h-4 w-4" />}
         </AppControlButton>
       </TooltipTrigger>
@@ -48,14 +64,13 @@ const ApplicationLayoutImpl = ({ children }: { children: ReactNode }) => {
 
   const { setOpen } = useSidebar()
 
+  const prevPathname = usePrevious(pathname)
   useEffect(() => {
-    if (hideOnRoutes.some((route) => pathname.startsWith(route))) {
-      setOpen(false)
-      return () => setOpen(true)
-    }
-    // setOpen refreshes on every `open` change, the hook won't work on `/login`, for instance
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname])
+    if (pathname === prevPathname || prevPathname === null) return
+
+    const isHideOnRoute = hideOnRoutes.some((route) => pathname.startsWith(route))
+    setOpen(!isHideOnRoute)
+  }, [pathname, prevPathname, setOpen])
 
   return (
     <>

@@ -1,4 +1,5 @@
 import { NextIntlClientProvider } from 'next-intl'
+import { ThemeProvider } from 'next-themes'
 import type { ReactNode } from 'react'
 
 import { TooltipProvider } from '../shadcn/tooltip'
@@ -12,7 +13,9 @@ type Props = {
 export const Providers = ({ children }: Props) => (
   <NextIntlClientProvider>
     <TooltipProvider>
-      <ProvidersClient>{children}</ProvidersClient>
+      <ThemeProvider>
+        <ProvidersClient>{children}</ProvidersClient>
+      </ThemeProvider>
     </TooltipProvider>
   </NextIntlClientProvider>
 )

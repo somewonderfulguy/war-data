@@ -4,9 +4,9 @@ import type { ComponentProps } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { cn } from '~/utils/utils'
-import { Button } from '~/components/shadcn/button'
-import { Input } from '~/components/shadcn/input'
-import { Label } from '~/components/shadcn/label'
+import { Button } from '~/components/shadcn/formControls/button'
+import { Input } from '~/components/shadcn/formControls/input'
+import { Label } from '~/components/shadcn/formControls/label'
 
 import { google, github, microsoft, discord } from './assets/oAuthIcons'
 

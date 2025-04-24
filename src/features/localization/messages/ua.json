@@ -10,6 +10,9 @@
     "signInWithGitHub": "Увійти через GitHub",
     "orSeparator": "Або продовжити з"
   },
+  "localization": {
+    "changeLanguage": "Змінити мову"
+  },
   "common": {
     "toggleSidebar": "Перемкнути бічну панель"
   }

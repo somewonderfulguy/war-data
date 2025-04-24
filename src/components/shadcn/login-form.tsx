@@ -1,14 +1,11 @@
-import { cn } from "~/utils/utils"
-import { Button } from "~/components/shadcn/button"
-import { Input } from "~/components/shadcn/input"
-import { Label } from "~/components/shadcn/label"
+import { cn } from '~/utils/utils'
+import { Button } from '~/components/shadcn/formControls/button'
+import { Input } from '~/components/shadcn/formControls/input'
+import { Label } from '~/components/shadcn/formControls/label'
 
-export function LoginForm({
-  className,
-  ...props
-}: React.ComponentProps<"form">) {
+export function LoginForm({ className, ...props }: React.ComponentProps<'form'>) {
   return (
-    <form className={cn("flex flex-col gap-6", className)} {...props}>
+    <form className={cn('flex flex-col gap-6', className)} {...props}>
       <div className="flex flex-col items-center gap-2 text-center">
         <h1 className="text-2xl font-bold">Login to your account</h1>
         <p className="text-muted-foreground text-sm text-balance">
@@ -23,10 +20,7 @@ export function LoginForm({
         <div className="grid gap-3">
           <div className="flex items-center">
             <Label htmlFor="password">Password</Label>
-            <a
-              href="#"
-              className="ml-auto text-sm underline-offset-4 hover:underline"
-            >
+            <a href="#" className="ml-auto text-sm underline-offset-4 hover:underline">
               Forgot your password?
             </a>
           </div>
@@ -51,7 +45,7 @@ export function LoginForm({
         </Button>
       </div>
       <div className="text-center text-sm">
-        Don&apos;t have an account?{" "}
+        Don&apos;t have an account?{' '}
         <a href="#" className="underline underline-offset-4">
           Sign up
         </a>

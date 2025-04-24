@@ -10,6 +10,9 @@
     "signInWithGitHub": "Zaloguj się przez GitHub",
     "orSeparator": "Lub kontynuuj z"
   },
+  "localization": {
+    "changeLanguage": "Zmień język"
+  },
   "common": {
     "toggleSidebar": "Przelącz pasek boczny"
   }

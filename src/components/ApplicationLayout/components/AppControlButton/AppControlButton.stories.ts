@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { AppControlButton } from './AppControlButton'
 
 const meta: Meta = {
-  title: 'Application Layout/App Control Button',
+  title: 'components/ApplicationLayout/AppControlButton',
   component: AppControlButton
 }
 

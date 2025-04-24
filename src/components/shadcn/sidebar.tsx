@@ -7,8 +7,8 @@ import { PanelLeftIcon } from 'lucide-react'
 
 import { useIsMobile } from '~/hooks/shadcn/use-mobile'
 import { cn } from '~/utils/utils'
-import { Button } from '~/components/shadcn/button'
-import { Input } from '~/components/shadcn/input'
+import { Button } from '~/components/shadcn/formControls/button'
+import { Input } from '~/components/shadcn/formControls/input'
 import { Separator } from '~/components/shadcn/separator'
 import {
   Sheet,

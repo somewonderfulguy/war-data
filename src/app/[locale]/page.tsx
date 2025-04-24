@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server'
 
-import { Button } from '~/components/shadcn/button'
+import { Button } from '~/components/shadcn/formControls/button'
 import { Link } from '~/features/localization/navigation'
 
 const HomePage = async () => {

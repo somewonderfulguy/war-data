@@ -12,6 +12,7 @@ import { usePrevious } from '~/hooks/usePrevious'
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/shadcn/tooltip'
 
 import { AppControlButton } from './components/AppControlButton'
+import { ChangeLocaleControl } from '~/features/localization/components/ChangeLocaleControl'
 
 const hideOnRoutes = ['/login']
 
@@ -61,7 +62,6 @@ const SidebarToggle = () => {
 
 const ApplicationLayoutImpl = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname()
-
   const { setOpen } = useSidebar()
 
   const prevPathname = usePrevious(pathname)
@@ -78,6 +78,8 @@ const ApplicationLayoutImpl = ({ children }: { children: ReactNode }) => {
 
       <div className={`fixed top-4 left-4 z-20 flex gap-1`}>
         <SidebarToggle />
+
+        <ChangeLocaleControl />
       </div>
 
       <div className="h-full w-full">{children}</div>

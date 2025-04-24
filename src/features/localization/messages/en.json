@@ -10,6 +10,9 @@
     "signInWithGitHub": "Sign in with GitHub",
     "orSeparator": "Or continue with"
   },
+  "localization": {
+    "changeLanguage": "Change language"
+  },
   "common": {
     "toggleSidebar": "Toggle sidebar"
   }

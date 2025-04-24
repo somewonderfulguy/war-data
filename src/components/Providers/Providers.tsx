@@ -5,6 +5,7 @@ import type { ReactNode } from 'react'
 import { TooltipProvider } from '../shadcn/tooltip'
 
 import { ProvidersClient } from './ProvidersClient'
+import { themes } from '~/features/theme/constants/themes'
 
 type Props = {
   children: ReactNode
@@ -13,7 +14,7 @@ type Props = {
 export const Providers = ({ children }: Props) => (
   <NextIntlClientProvider>
     <TooltipProvider>
-      <ThemeProvider>
+      <ThemeProvider attribute="class" themes={themes as unknown as string[]}>
         <ProvidersClient>{children}</ProvidersClient>
       </ThemeProvider>
     </TooltipProvider>

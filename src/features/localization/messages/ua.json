@@ -13,6 +13,12 @@
   "localization": {
     "changeLanguage": "Змінити мову"
   },
+  "theme": {
+    "changeTheme": "Змінити тему",
+    "lightTheme": "Світла",
+    "darkTheme": "Темна",
+    "systemTheme": "Системна"
+  },
   "common": {
     "toggleSidebar": "Перемкнути бічну панель"
   }

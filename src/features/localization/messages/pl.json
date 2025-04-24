@@ -13,6 +13,12 @@
   "localization": {
     "changeLanguage": "Zmień język"
   },
+  "theme": {
+    "changeTheme": "Zmień motyw",
+    "lightTheme": "Jasny",
+    "darkTheme": "Ciemny",
+    "systemTheme": "Systemowy"
+  },
   "common": {
     "toggleSidebar": "Przelącz pasek boczny"
   }

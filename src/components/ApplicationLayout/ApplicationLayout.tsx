@@ -10,9 +10,10 @@ import { cn } from '~/utils'
 import { usePathname } from '~/features/localization/navigation'
 import { usePrevious } from '~/hooks/usePrevious'
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/shadcn/tooltip'
+import { ChangeLocaleControl } from '~/features/localization/components/ChangeLocaleControl'
+import { ChangeThemeControl } from '~/features/theme/components/ChangeThemeControl'
 
 import { AppControlButton } from './components/AppControlButton'
-import { ChangeLocaleControl } from '~/features/localization/components/ChangeLocaleControl'
 
 const hideOnRoutes = ['/login']
 
@@ -78,6 +79,8 @@ const ApplicationLayoutImpl = ({ children }: { children: ReactNode }) => {
 
       <div className={`fixed top-4 left-4 z-20 flex gap-1`}>
         <SidebarToggle />
+
+        <ChangeThemeControl />
 
         <ChangeLocaleControl />
       </div>

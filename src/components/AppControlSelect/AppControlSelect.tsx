@@ -43,6 +43,7 @@ const AppControlSelectComponent = ({ trigger, options, ...props }: AppControlSel
           className={cn(
             'focus:bg-accent focus:text-accent-foreground flex cursor-pointer items-center rounded-sm',
             'px-2 py-1.5 text-sm outline-none disabled:pointer-events-none disabled:opacity-50',
+            '[&_span[aria-hidden]]:hidden',
             props.value === option.value && 'bg-secondary font-semibold'
           )}
         >

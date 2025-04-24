@@ -13,6 +13,12 @@
   "localization": {
     "changeLanguage": "言語を変更"
   },
+  "theme": {
+    "changeTheme": "テーマを変更",
+    "lightTheme": "ライト",
+    "darkTheme": "ダーク",
+    "systemTheme": "システム"
+  },
   "common": {
     "toggleSidebar": "サイドバーを切り替え"
   }

@@ -13,6 +13,12 @@
   "localization": {
     "changeLanguage": "Change language"
   },
+  "theme": {
+    "changeTheme": "Change theme",
+    "lightTheme": "Light",
+    "darkTheme": "Dark",
+    "systemTheme": "System"
+  },
   "common": {
     "toggleSidebar": "Toggle sidebar"
   }

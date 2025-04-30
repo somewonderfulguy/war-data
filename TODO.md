@@ -1,7 +1,3 @@
-## Theme
-
-- [ ] Theme Provider to `features`
-
 ## Storybook
 
 - [ ] Storybook for ChangeThemeControl

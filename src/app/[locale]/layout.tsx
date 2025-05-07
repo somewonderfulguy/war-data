@@ -1,4 +1,4 @@
-import '~/styles/globals.css'
+import '@/styles/globals.css'
 
 import { type Metadata } from 'next'
 import { Geist } from 'next/font/google'
@@ -7,10 +7,10 @@ import type { ReactNode } from 'react'
 import { notFound } from 'next/navigation'
 import { cookies } from 'next/headers'
 
-import { ApplicationLayout } from '~/components/ApplicationLayout'
-import { Providers } from '~/components/Providers'
-import type { NextPageProps } from '~/types/NextPageProps'
-import { routing } from '~/features/localization/routing'
+import { ApplicationLayout } from '@/components/ApplicationLayout'
+import { Providers } from '@/components/Providers'
+import type { NextPageProps } from '@/types/NextPageProps'
+import { routing } from '@/features/localization/routing'
 
 export const metadata: Metadata = {
   title: 'War Data',

@@ -1,14 +1,14 @@
 import type { ComponentProps, ReactNode } from 'react'
-import { Button } from '~/components/shadcn/formControls/button'
 
+import { Button } from '@/components/shadcn/formControls/button'
 import {
   Select,
   SelectContent,
   SelectTrigger,
   SelectValue,
   SelectItem
-} from '~/components/shadcn/formControls/select'
-import { cn } from '~/utils'
+} from '@/components/shadcn/formControls/select'
+import { cn } from '@/utils'
 
 type AppControlSelectProps = Omit<ComponentProps<typeof Select>, 'children'> & {
   trigger: ReactNode

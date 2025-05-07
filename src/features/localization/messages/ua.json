@@ -2,6 +2,8 @@
   "auth": {
     "signIn": "Увійти",
     "emailLabel": "Електронна пошта",
+    "emailWrong": "Електронна пошта недійсна",
+    "loginFailed": "Не вдалося увійти",
     "emailButton": "Увійти через пошту",
     "signInWithEmail": "Увійти через пошту",
     "signInWithGoogle": "Увійти через Google",

@@ -9,7 +9,10 @@ export const env = createEnv({
   server: {
     DATABASE_URL: zod.string().url(),
     NODE_ENV: zod.enum(['development', 'test', 'production']).default('development'),
-    STORYBOOK: zod.coerce.boolean().default(false)
+    STORYBOOK: zod.coerce.boolean().default(false),
+    RESEND_API_KEY: zod.string(),
+    GOOGLE_CLIENT_ID: zod.string(),
+    GOOGLE_CLIENT_SECRET: zod.string()
   },
 
   /**
@@ -31,7 +34,10 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     STORYBOOK: process.env.STORYBOOK,
     NEXT_PUBLIC_NODE_ENV: process.env.NODE_ENV,
-    NEXT_PUBLIC_STORYBOOK: process.env.STORYBOOK
+    NEXT_PUBLIC_STORYBOOK: process.env.STORYBOOK,
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET
   },
 
   /**

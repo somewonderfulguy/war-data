@@ -1,7 +1,7 @@
 import { NextIntlClientProvider } from 'next-intl'
 import type { ReactNode } from 'react'
 
-import { ThemeProvider } from '~/features/theme/components/ThemeProvider'
+import { ThemeProvider } from '@/features/theme/components/ThemeProvider'
 
 import { TooltipProvider } from '../shadcn/tooltip'
 import { ProvidersClient } from './ProvidersClient'

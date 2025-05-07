@@ -2,6 +2,8 @@
   "auth": {
     "signIn": "サインイン",
     "emailLabel": "メールアドレス",
+    "emailWrong": "メールアドレスが無効です",
+    "loginFailed": "ログインに失敗しました",
     "signInWithEmail": "メールアドレスでサインイン",
     "emailButton": "メールアドレスでサインイン",
     "signInWithGoogle": "Googleでサインイン",

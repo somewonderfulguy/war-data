@@ -2,6 +2,8 @@
   "auth": {
     "signIn": "Sign In",
     "emailLabel": "Email",
+    "emailWrong": "Email is not valid",
+    "loginFailed": "Failed to log in",
     "signInWithEmail": "Sign in with email",
     "emailButton": "Sign in with email",
     "signInWithGoogle": "Sign in with Google",

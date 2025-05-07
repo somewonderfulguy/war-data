@@ -12,9 +12,10 @@ import {
   type FieldPath,
   type FieldValues
 } from 'react-hook-form'
+import { useTranslations } from 'next-intl'
 
-import { cn } from '~/utils'
-import { Label } from '~/components/shadcn/formControls/label'
+import { cn } from '@/utils'
+import { Label } from '@/components/shadcn/formControls/label'
 
 const Form = FormProvider
 
@@ -121,8 +122,10 @@ function FormDescription({ className, ...props }: React.ComponentProps<'p'>) {
 }
 
 function FormMessage({ className, ...props }: React.ComponentProps<'p'>) {
+  const t = useTranslations()
+
   const { error, formMessageId } = useFormField()
-  const body = error ? String(error?.message ?? '') : props.children
+  const body = error ? t(String(error?.message ?? '')) : props.children
 
   if (!body) {
     return null

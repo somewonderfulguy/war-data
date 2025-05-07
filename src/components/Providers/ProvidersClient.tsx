@@ -3,7 +3,7 @@
 import type { ReactNode } from 'react'
 import { isServer, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-import { isStorybook } from '~/constants/envVarsClient'
+import { isStorybook } from '@/constants/envVarsClient'
 
 type Props = {
   children: ReactNode

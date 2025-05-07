@@ -4,14 +4,15 @@ import { useEffect, type ComponentProps, type ReactNode } from 'react'
 import { MenuIcon, XIcon } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 
-import { SidebarProvider, useSidebar } from '~/components/shadcn/sidebar'
-import { AppSidebar } from '~/components/AppSidebar'
-import { cn } from '~/utils'
-import { usePathname } from '~/features/localization/navigation'
-import { usePrevious } from '~/hooks/usePrevious'
-import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/shadcn/tooltip'
-import { ChangeLocaleControl } from '~/features/localization/components/ChangeLocaleControl'
-import { ChangeThemeControl } from '~/features/theme/components/ChangeThemeControl'
+import { SidebarProvider, useSidebar } from '@/components/shadcn/sidebar'
+import { AppSidebar } from '@/components/AppSidebar'
+import { cn } from '@/utils'
+import { usePathname } from '@/features/localization/navigation'
+import { usePrevious } from '@/hooks/usePrevious'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/shadcn/tooltip'
+import { ChangeLocaleControl } from '@/features/localization/components/ChangeLocaleControl'
+import { ChangeThemeControl } from '@/features/theme/components/ChangeThemeControl'
+import { ProfileControl } from '@/features/auth/components/ProfileControl'
 
 import { AppControlButton } from './components/AppControlButton'
 
@@ -83,6 +84,8 @@ const ApplicationLayoutImpl = ({ children }: { children: ReactNode }) => {
         <ChangeThemeControl />
 
         <ChangeLocaleControl />
+
+        <ProfileControl />
       </div>
 
       <div className="h-full w-full">{children}</div>

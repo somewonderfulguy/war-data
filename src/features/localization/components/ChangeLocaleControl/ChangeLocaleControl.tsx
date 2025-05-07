@@ -1,8 +1,8 @@
 import { useLocale, useTranslations } from 'next-intl'
 import { useTransition } from 'react'
 
-import { AppControlSelect } from '~/components/AppControlSelect'
-import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/shadcn/tooltip'
+import { AppControlSelect } from '@/components/AppControlSelect'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/shadcn/tooltip'
 
 import { usePathname, useRouter } from '../../navigation'
 

@@ -1,9 +1,9 @@
 import { useTranslations } from 'next-intl'
 import { MoonIcon, SunIcon } from 'lucide-react'
 
-import { AppControlSelect } from '~/components/AppControlSelect'
-import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/shadcn/tooltip'
-import { useIsMounted } from '~/hooks/useIsMounted'
+import { AppControlSelect } from '@/components/AppControlSelect'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/shadcn/tooltip'
+import { useIsMounted } from '@/hooks/useIsMounted'
 
 import { useTheme } from '../../hooks/useTheme'
 import type { Theme } from '../../types/themeTypes'

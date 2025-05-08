@@ -1,1 +1,1 @@
-export { LoginPage as default } from '@/features/auth/components/LoginPage'
+export { LoginPage as default } from '@/features/auth/pages/LoginPage'

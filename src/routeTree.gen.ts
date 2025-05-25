@@ -11,24 +11,14 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as PerpetuaImport } from './routes/perpetua'
-import { Route as LocaleImport } from './routes/$locale'
 import { Route as IndexImport } from './routes/index'
-import { Route as LocalePerpetuaImport } from './routes/$locale.perpetua'
+import { Route as StartApiRequestImport } from './routes/start.api-request'
+import { Route as DemoTanstackQueryImport } from './routes/demo.tanstack-query'
+import { Route as DemoStartServerFuncsImport } from './routes/demo.start.server-funcs'
+import { Route as DemoFormSimpleImport } from './routes/demo.form.simple'
+import { Route as DemoFormAddressImport } from './routes/demo.form.address'
 
 // Create/Update Routes
-
-const PerpetuaRoute = PerpetuaImport.update({
-  id: '/perpetua',
-  path: '/perpetua',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const LocaleRoute = LocaleImport.update({
-  id: '/$locale',
-  path: '/$locale',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
@@ -36,10 +26,34 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const LocalePerpetuaRoute = LocalePerpetuaImport.update({
-  id: '/perpetua',
-  path: '/perpetua',
-  getParentRoute: () => LocaleRoute,
+const StartApiRequestRoute = StartApiRequestImport.update({
+  id: '/start/api-request',
+  path: '/start/api-request',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DemoTanstackQueryRoute = DemoTanstackQueryImport.update({
+  id: '/demo/tanstack-query',
+  path: '/demo/tanstack-query',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DemoStartServerFuncsRoute = DemoStartServerFuncsImport.update({
+  id: '/demo/start/server-funcs',
+  path: '/demo/start/server-funcs',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DemoFormSimpleRoute = DemoFormSimpleImport.update({
+  id: '/demo/form/simple',
+  path: '/demo/form/simple',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DemoFormAddressRoute = DemoFormAddressImport.update({
+  id: '/demo/form/address',
+  path: '/demo/form/address',
+  getParentRoute: () => rootRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -53,84 +67,118 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/$locale': {
-      id: '/$locale'
-      path: '/$locale'
-      fullPath: '/$locale'
-      preLoaderRoute: typeof LocaleImport
+    '/demo/tanstack-query': {
+      id: '/demo/tanstack-query'
+      path: '/demo/tanstack-query'
+      fullPath: '/demo/tanstack-query'
+      preLoaderRoute: typeof DemoTanstackQueryImport
       parentRoute: typeof rootRoute
     }
-    '/perpetua': {
-      id: '/perpetua'
-      path: '/perpetua'
-      fullPath: '/perpetua'
-      preLoaderRoute: typeof PerpetuaImport
+    '/start/api-request': {
+      id: '/start/api-request'
+      path: '/start/api-request'
+      fullPath: '/start/api-request'
+      preLoaderRoute: typeof StartApiRequestImport
       parentRoute: typeof rootRoute
     }
-    '/$locale/perpetua': {
-      id: '/$locale/perpetua'
-      path: '/perpetua'
-      fullPath: '/$locale/perpetua'
-      preLoaderRoute: typeof LocalePerpetuaImport
-      parentRoute: typeof LocaleImport
+    '/demo/form/address': {
+      id: '/demo/form/address'
+      path: '/demo/form/address'
+      fullPath: '/demo/form/address'
+      preLoaderRoute: typeof DemoFormAddressImport
+      parentRoute: typeof rootRoute
+    }
+    '/demo/form/simple': {
+      id: '/demo/form/simple'
+      path: '/demo/form/simple'
+      fullPath: '/demo/form/simple'
+      preLoaderRoute: typeof DemoFormSimpleImport
+      parentRoute: typeof rootRoute
+    }
+    '/demo/start/server-funcs': {
+      id: '/demo/start/server-funcs'
+      path: '/demo/start/server-funcs'
+      fullPath: '/demo/start/server-funcs'
+      preLoaderRoute: typeof DemoStartServerFuncsImport
+      parentRoute: typeof rootRoute
     }
   }
 }
 
 // Create and export the route tree
 
-interface LocaleRouteChildren {
-  LocalePerpetuaRoute: typeof LocalePerpetuaRoute
-}
-
-const LocaleRouteChildren: LocaleRouteChildren = {
-  LocalePerpetuaRoute: LocalePerpetuaRoute,
-}
-
-const LocaleRouteWithChildren =
-  LocaleRoute._addFileChildren(LocaleRouteChildren)
-
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/$locale': typeof LocaleRouteWithChildren
-  '/perpetua': typeof PerpetuaRoute
-  '/$locale/perpetua': typeof LocalePerpetuaRoute
+  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/start/api-request': typeof StartApiRequestRoute
+  '/demo/form/address': typeof DemoFormAddressRoute
+  '/demo/form/simple': typeof DemoFormSimpleRoute
+  '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/$locale': typeof LocaleRouteWithChildren
-  '/perpetua': typeof PerpetuaRoute
-  '/$locale/perpetua': typeof LocalePerpetuaRoute
+  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/start/api-request': typeof StartApiRequestRoute
+  '/demo/form/address': typeof DemoFormAddressRoute
+  '/demo/form/simple': typeof DemoFormSimpleRoute
+  '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/$locale': typeof LocaleRouteWithChildren
-  '/perpetua': typeof PerpetuaRoute
-  '/$locale/perpetua': typeof LocalePerpetuaRoute
+  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/start/api-request': typeof StartApiRequestRoute
+  '/demo/form/address': typeof DemoFormAddressRoute
+  '/demo/form/simple': typeof DemoFormSimpleRoute
+  '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$locale' | '/perpetua' | '/$locale/perpetua'
+  fullPaths:
+    | '/'
+    | '/demo/tanstack-query'
+    | '/start/api-request'
+    | '/demo/form/address'
+    | '/demo/form/simple'
+    | '/demo/start/server-funcs'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$locale' | '/perpetua' | '/$locale/perpetua'
-  id: '__root__' | '/' | '/$locale' | '/perpetua' | '/$locale/perpetua'
+  to:
+    | '/'
+    | '/demo/tanstack-query'
+    | '/start/api-request'
+    | '/demo/form/address'
+    | '/demo/form/simple'
+    | '/demo/start/server-funcs'
+  id:
+    | '__root__'
+    | '/'
+    | '/demo/tanstack-query'
+    | '/start/api-request'
+    | '/demo/form/address'
+    | '/demo/form/simple'
+    | '/demo/start/server-funcs'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  LocaleRoute: typeof LocaleRouteWithChildren
-  PerpetuaRoute: typeof PerpetuaRoute
+  DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
+  StartApiRequestRoute: typeof StartApiRequestRoute
+  DemoFormAddressRoute: typeof DemoFormAddressRoute
+  DemoFormSimpleRoute: typeof DemoFormSimpleRoute
+  DemoStartServerFuncsRoute: typeof DemoStartServerFuncsRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  LocaleRoute: LocaleRouteWithChildren,
-  PerpetuaRoute: PerpetuaRoute,
+  DemoTanstackQueryRoute: DemoTanstackQueryRoute,
+  StartApiRequestRoute: StartApiRequestRoute,
+  DemoFormAddressRoute: DemoFormAddressRoute,
+  DemoFormSimpleRoute: DemoFormSimpleRoute,
+  DemoStartServerFuncsRoute: DemoStartServerFuncsRoute,
 }
 
 export const routeTree = rootRoute
@@ -144,25 +192,30 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/$locale",
-        "/perpetua"
+        "/demo/tanstack-query",
+        "/start/api-request",
+        "/demo/form/address",
+        "/demo/form/simple",
+        "/demo/start/server-funcs"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/$locale": {
-      "filePath": "$locale.tsx",
-      "children": [
-        "/$locale/perpetua"
-      ]
+    "/demo/tanstack-query": {
+      "filePath": "demo.tanstack-query.tsx"
     },
-    "/perpetua": {
-      "filePath": "perpetua.tsx"
+    "/start/api-request": {
+      "filePath": "start.api-request.tsx"
     },
-    "/$locale/perpetua": {
-      "filePath": "$locale.perpetua.tsx",
-      "parent": "/$locale"
+    "/demo/form/address": {
+      "filePath": "demo.form.address.tsx"
+    },
+    "/demo/form/simple": {
+      "filePath": "demo.form.simple.tsx"
+    },
+    "/demo/start/server-funcs": {
+      "filePath": "demo.start.server-funcs.tsx"
     }
   }
 }

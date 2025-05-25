@@ -21,7 +21,6 @@ const updateCount = createServerFn({ method: 'POST' })
     await fs.promises.writeFile(filePath, `${count + data}`)
   })
 
-// @ts-ignore
 export const Route = createFileRoute('/demo/start/server-funcs')({
   component: Home,
   loader: async () => await getCount(),

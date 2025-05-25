@@ -6,7 +6,6 @@ function getNames() {
   return fetch('/api/demo-names').then((res) => res.json())
 }
 
-// @ts-ignore
 export const Route = createFileRoute('/start/api-request')({
   component: Home,
 })

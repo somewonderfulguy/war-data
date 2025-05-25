@@ -1,7 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
 
-// @ts-ignore
 export const Route = createFileRoute('/demo/tanstack-query')({
   component: TanStackQueryDemo,
 })

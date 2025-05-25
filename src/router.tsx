@@ -4,8 +4,7 @@ import { routerWithQueryClient } from '@tanstack/react-router-with-query'
 import * as TanstackQuery from './bucket/tanstack-query/root-provider'
 import { routeTree } from './routeTree.gen'
 
-// TODO: remove this import
-// import './styles/globals.css'
+import './styles/globals.css'
 
 export const createRouter = () => {
   const router = routerWithQueryClient(

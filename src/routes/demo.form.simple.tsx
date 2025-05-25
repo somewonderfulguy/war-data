@@ -1,9 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { z } from 'zod'
 
-import { useAppForm } from '../hooks/demo.form'
+import { useAppForm } from '../bucket/hooks/demo.form'
 
-// @ts-ignore
 export const Route = createFileRoute('/demo/form/simple')({
   component: SimpleForm,
 })

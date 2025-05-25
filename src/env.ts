@@ -1,54 +1,50 @@
-import { createEnv } from '@t3-oss/env-nextjs'
+import { createEnv } from '@t3-oss/env-core'
 import zod from 'zod'
 
 export const env = createEnv({
-  /**
-   * Specify your server-side environment variables schema here. This way you can ensure the app
-   * isn't built with invalid env vars.
-   */
   server: {
     DATABASE_URL: zod.string().url(),
-    NODE_ENV: zod.enum(['development', 'test', 'production']).default('development'),
+    NODE_ENV: zod
+      .enum(['development', 'test', 'production'])
+      .default('development'),
     STORYBOOK: zod.coerce.boolean().default(false),
     RESEND_API_KEY: zod.string(),
     GOOGLE_CLIENT_ID: zod.string(),
-    GOOGLE_CLIENT_SECRET: zod.string()
+    GOOGLE_CLIENT_SECRET: zod.string(),
   },
 
   /**
-   * Specify your client-side environment variables schema here. This way you can ensure the app
-   * isn't built with invalid env vars. To expose them to the client, prefix them with
-   * `NEXT_PUBLIC_`.
+   * The prefix that client-side variables must have. This is enforced both at
+   * a type-level and at runtime.
    */
-  client: {
-    NEXT_PUBLIC_NODE_ENV: zod.enum(['development', 'test', 'production']).default('development'),
-    NEXT_PUBLIC_STORYBOOK: zod.coerce.boolean().default(false)
-  },
+  clientPrefix: 'VITE_',
+
+  client: {},
 
   /**
-   * You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
-   * middlewares) or client-side so we need to destruct manually.
+   * What object holds the environment variables at runtime. This is usually
+   * `process.env` or `import.meta.env`.
    */
-  runtimeEnv: {
-    DATABASE_URL: process.env.DATABASE_URL,
-    NODE_ENV: process.env.NODE_ENV,
-    STORYBOOK: process.env.STORYBOOK,
-    NEXT_PUBLIC_NODE_ENV: process.env.NODE_ENV,
-    NEXT_PUBLIC_STORYBOOK: process.env.STORYBOOK,
-    RESEND_API_KEY: process.env.RESEND_API_KEY,
-    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
-    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET
-  },
+  runtimeEnv: import.meta.env,
 
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
    * useful for Docker builds.
    */
-  skipValidation: !!process.env.SKIP_ENV_VALIDATION,
+  skipValidation: !!import.meta.env.SKIP_ENV_VALIDATION,
 
   /**
-   * Makes it so that empty strings are treated as undefined. `SOME_VAR: zod.string()` and
-   * `SOME_VAR=''` will throw an error.
+   * By default, this library will feed the environment variables directly to
+   * the Zod validator.
+   *
+   * This means that if you have an empty string for a value that is supposed
+   * to be a number (e.g. `PORT=` in a ".env" file), Zod will incorrectly flag
+   * it as a type mismatch violation. Additionally, if you have an empty string
+   * for a value that is supposed to be a string with a default value (e.g.
+   * `DOMAIN=` in an ".env" file), the default value will never be applied.
+   *
+   * In order to solve these issues, we recommend that all new projects
+   * explicitly specify this option as true.
    */
-  emptyStringAsUndefined: true
+  emptyStringAsUndefined: true,
 })

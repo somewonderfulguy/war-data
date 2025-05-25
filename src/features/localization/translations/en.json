@@ -1,0 +1,13 @@
+{
+  "perpetua": {
+    "title": "Andrew Perpetua",
+    "description": "This is the Perpetua page."
+  },
+  "common": {
+    "back": "Back",
+    "next": "Next",
+    "save": "Save",
+    "cancel": "Cancel",
+    "loading": "Loading..."
+  }
+}

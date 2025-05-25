@@ -1,6 +1,14 @@
-## Storybook
+[ ] configure routes and learn it
+[ ] home page
+[ ] login page
+[ ] developer's page
+[ ] link to login page with query params
+[ ] read query params in login page
 
-- [ ] Storybook for ChangeThemeControl
-- [ ] Storybook for ChangeLocaleControl
-- [ ] Storybook for each Shadcn component
-- [ ] Go through all codebase and check if any component is missing a storybook
+[ ] replicate home page
+[ ] replicate sidebar
+[ ] replicate Google Sign In
+[ ] implement Github Sign In
+[ ] replicate MagicLink Sign In
+[ ] replicate theme switching
+[ ] replicate language switching (if possible)

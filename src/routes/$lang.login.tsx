@@ -7,10 +7,10 @@ export const Route = createFileRoute('/$lang/login')({
 
 function LoginPage() {
   const { t } = useTranslation()
-  
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-[#282c34] text-white">
-      <h1 className="text-4xl mb-4">{t('login')}</h1>
+      <h1 className="mb-4 text-4xl">{t('login')}</h1>
     </div>
   )
 }

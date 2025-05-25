@@ -4,7 +4,7 @@ export default {
   singleQuote: true,
   semi: false,
   tabWidth: 2,
-  printWidth: 100,
+  printWidth: 80,
   jsxSingleQuote: false,
   trailingComma: 'all',
 }

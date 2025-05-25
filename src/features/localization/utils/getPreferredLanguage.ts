@@ -1,8 +1,8 @@
-import { DEFAULT_LANGUAGE } from '../constants/localizationConst'
+import { DEFAULT_LANGUAGE } from '../constants/localizationConstants'
 import type { Language } from '../types/localizationTypes'
 import { isValidLanguage } from './isValidLanguage'
 
-export function getPreferredLanguage(): Language {
+export const getPreferredLanguage = (): Language => {
   if (typeof navigator === 'undefined') return DEFAULT_LANGUAGE
 
   const browserLangs = navigator.languages || [navigator.language]

@@ -3,6 +3,7 @@ import { z } from 'zod'
 
 import { useAppForm } from '../hooks/demo.form'
 
+// @ts-ignore
 export const Route = createFileRoute('/demo/form/simple')({
   component: SimpleForm,
 })

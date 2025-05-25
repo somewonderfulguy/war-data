@@ -1,7 +1,6 @@
 import { HeadContent, Outlet, Scripts, createRootRouteWithContext } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
-
-import TanstackQueryLayout from '../bucket/tanstack-query/layout'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 import appCss from '../styles/globals.css?url'
 
@@ -37,8 +36,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
     <RootDocument>
       <Outlet />
       <TanStackRouterDevtools position="bottom-left" />
-
-      <TanstackQueryLayout />
+      <ReactQueryDevtools buttonPosition="bottom-right" />
     </RootDocument>
   ),
 })

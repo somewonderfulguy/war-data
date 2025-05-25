@@ -9,7 +9,5 @@
     "**/routeTree.gen.ts": true
   },
   "prettier.configPath": "prettier.config.js",
-  "i18n-ally.localesPaths": [
-    "src/features/localization/locales"
-  ]
+  "i18n-ally.localesPaths": ["src/features/localization/locales"]
 }

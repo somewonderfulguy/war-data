@@ -1,13 +1,16 @@
 import zod from 'zod'
 
-export const createLocalizationSchema = <T extends zod.ZodTypeAny>(
+/**
+ * Reusable schema creator to extend with common translations
+ */
+export const createLocalizationSchema = <T extends zod.ZodRawShape>(
   featureSchema: T,
 ) => {
-  return zod.object({
-    common: zod.object({
-      back: zod.string(),
-      loading: zod.string(),
-    }),
-    feature: featureSchema,
-  })
+  return zod
+    .object({
+      common: zod.object({
+        toggleSidebar: zod.string(),
+      }),
+    })
+    .extend(featureSchema)
 }

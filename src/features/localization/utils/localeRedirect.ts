@@ -3,7 +3,9 @@ import { redirect } from '@tanstack/react-router'
 import { isValidLanguage } from './isValidLanguage'
 import { getPreferredLanguage } from './getPreferredLanguage'
 
-export const localeRedirect = (pathname: string) => {
+export const localeRedirect = (
+  pathname: string,
+): ReturnType<typeof redirect> | null => {
   const segments = pathname.split('/').filter(Boolean)
   const firstSegment = segments[0]
 

@@ -8,28 +8,39 @@
   ],
 
   "compilerOptions": {
+    /* Basic Options */
     "target": "ES2022",
-    "jsx": "react-jsx",
     "module": "ESNext",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "types": ["vite/client", "vitest/globals"],
+    "jsx": "react-jsx",
 
-    /* Bundler mode */
+    /* Module Resolution */
     "moduleResolution": "bundler",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "types": ["vite/client", "vitest/globals"],
+    "esModuleInterop": true,
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+
+    /* Emit */
     "noEmit": true,
 
-    /* Linting */
-    "skipLibCheck": true,
+    /* Type Checking */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "noImplicitOverride": true,
+    "useUnknownInCatchVariables": true,
+    "allowUnreachableCode": false,
+
+    /* Other */
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   }
 }

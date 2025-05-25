@@ -1,12 +1,14 @@
 import { createFileRoute, redirect } from '@tanstack/react-router'
+import { getPreferredLanguage } from '../middleware/language'
 
 export const Route = createFileRoute('/')({
   beforeLoad: () => {
-    throw redirect({ to: '/perpetua' })
+    const preferredLang = getPreferredLanguage()
+    // Redirect directly to the language-specific perpetua page
+    throw redirect({
+      to: '/$lang/perpetua',
+      params: { lang: preferredLang },
+    })
   },
-  component: App,
+  component: () => null,
 })
-
-function App() {
-  return null
-}

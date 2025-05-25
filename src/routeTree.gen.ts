@@ -13,8 +13,12 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as PerpetuaImport } from './routes/perpetua'
 import { Route as LoginImport } from './routes/login'
+import { Route as LangImport } from './routes/$lang'
 import { Route as IndexImport } from './routes/index'
+import { Route as LangIndexImport } from './routes/$lang.index'
 import { Route as StartApiRequestImport } from './routes/start.api-request'
+import { Route as LangPerpetuaImport } from './routes/$lang.perpetua'
+import { Route as LangLoginImport } from './routes/$lang.login'
 
 // Create/Update Routes
 
@@ -30,16 +34,40 @@ const LoginRoute = LoginImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const LangRoute = LangImport.update({
+  id: '/$lang',
+  path: '/$lang',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRoute,
 } as any)
 
+const LangIndexRoute = LangIndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LangRoute,
+} as any)
+
 const StartApiRequestRoute = StartApiRequestImport.update({
   id: '/start/api-request',
   path: '/start/api-request',
   getParentRoute: () => rootRoute,
+} as any)
+
+const LangPerpetuaRoute = LangPerpetuaImport.update({
+  id: '/perpetua',
+  path: '/perpetua',
+  getParentRoute: () => LangRoute,
+} as any)
+
+const LangLoginRoute = LangLoginImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => LangRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -51,6 +79,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/$lang': {
+      id: '/$lang'
+      path: '/$lang'
+      fullPath: '/$lang'
+      preLoaderRoute: typeof LangImport
       parentRoute: typeof rootRoute
     }
     '/login': {
@@ -67,6 +102,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PerpetuaImport
       parentRoute: typeof rootRoute
     }
+    '/$lang/login': {
+      id: '/$lang/login'
+      path: '/login'
+      fullPath: '/$lang/login'
+      preLoaderRoute: typeof LangLoginImport
+      parentRoute: typeof LangImport
+    }
+    '/$lang/perpetua': {
+      id: '/$lang/perpetua'
+      path: '/perpetua'
+      fullPath: '/$lang/perpetua'
+      preLoaderRoute: typeof LangPerpetuaImport
+      parentRoute: typeof LangImport
+    }
     '/start/api-request': {
       id: '/start/api-request'
       path: '/start/api-request'
@@ -74,44 +123,101 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StartApiRequestImport
       parentRoute: typeof rootRoute
     }
+    '/$lang/': {
+      id: '/$lang/'
+      path: '/'
+      fullPath: '/$lang/'
+      preLoaderRoute: typeof LangIndexImport
+      parentRoute: typeof LangImport
+    }
   }
 }
 
 // Create and export the route tree
 
+interface LangRouteChildren {
+  LangLoginRoute: typeof LangLoginRoute
+  LangPerpetuaRoute: typeof LangPerpetuaRoute
+  LangIndexRoute: typeof LangIndexRoute
+}
+
+const LangRouteChildren: LangRouteChildren = {
+  LangLoginRoute: LangLoginRoute,
+  LangPerpetuaRoute: LangPerpetuaRoute,
+  LangIndexRoute: LangIndexRoute,
+}
+
+const LangRouteWithChildren = LangRoute._addFileChildren(LangRouteChildren)
+
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$lang': typeof LangRouteWithChildren
   '/login': typeof LoginRoute
   '/perpetua': typeof PerpetuaRoute
+  '/$lang/login': typeof LangLoginRoute
+  '/$lang/perpetua': typeof LangPerpetuaRoute
   '/start/api-request': typeof StartApiRequestRoute
+  '/$lang/': typeof LangIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/perpetua': typeof PerpetuaRoute
+  '/$lang/login': typeof LangLoginRoute
+  '/$lang/perpetua': typeof LangPerpetuaRoute
   '/start/api-request': typeof StartApiRequestRoute
+  '/$lang': typeof LangIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/$lang': typeof LangRouteWithChildren
   '/login': typeof LoginRoute
   '/perpetua': typeof PerpetuaRoute
+  '/$lang/login': typeof LangLoginRoute
+  '/$lang/perpetua': typeof LangPerpetuaRoute
   '/start/api-request': typeof StartApiRequestRoute
+  '/$lang/': typeof LangIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/perpetua' | '/start/api-request'
+  fullPaths:
+    | '/'
+    | '/$lang'
+    | '/login'
+    | '/perpetua'
+    | '/$lang/login'
+    | '/$lang/perpetua'
+    | '/start/api-request'
+    | '/$lang/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/perpetua' | '/start/api-request'
-  id: '__root__' | '/' | '/login' | '/perpetua' | '/start/api-request'
+  to:
+    | '/'
+    | '/login'
+    | '/perpetua'
+    | '/$lang/login'
+    | '/$lang/perpetua'
+    | '/start/api-request'
+    | '/$lang'
+  id:
+    | '__root__'
+    | '/'
+    | '/$lang'
+    | '/login'
+    | '/perpetua'
+    | '/$lang/login'
+    | '/$lang/perpetua'
+    | '/start/api-request'
+    | '/$lang/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LangRoute: typeof LangRouteWithChildren
   LoginRoute: typeof LoginRoute
   PerpetuaRoute: typeof PerpetuaRoute
   StartApiRequestRoute: typeof StartApiRequestRoute
@@ -119,6 +225,7 @@ export interface RootRouteChildren {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LangRoute: LangRouteWithChildren,
   LoginRoute: LoginRoute,
   PerpetuaRoute: PerpetuaRoute,
   StartApiRequestRoute: StartApiRequestRoute,
@@ -135,6 +242,7 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/$lang",
         "/login",
         "/perpetua",
         "/start/api-request"
@@ -143,14 +251,34 @@ export const routeTree = rootRoute
     "/": {
       "filePath": "index.tsx"
     },
+    "/$lang": {
+      "filePath": "$lang.tsx",
+      "children": [
+        "/$lang/login",
+        "/$lang/perpetua",
+        "/$lang/"
+      ]
+    },
     "/login": {
       "filePath": "login.tsx"
     },
     "/perpetua": {
       "filePath": "perpetua.tsx"
     },
+    "/$lang/login": {
+      "filePath": "$lang.login.tsx",
+      "parent": "/$lang"
+    },
+    "/$lang/perpetua": {
+      "filePath": "$lang.perpetua.tsx",
+      "parent": "/$lang"
+    },
     "/start/api-request": {
       "filePath": "start.api-request.tsx"
+    },
+    "/$lang/": {
+      "filePath": "$lang.index.tsx",
+      "parent": "/$lang"
     }
   }
 }

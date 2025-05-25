@@ -1,0 +1,27 @@
+{
+  "auth": {
+    "signIn": "Zaloguj się",
+    "emailLabel": "E-mail",
+    "emailWrong": "E-mail jest nieprawidłowy",
+    "loginFailed": "Nie udało się zalogować",
+    "emailButton": "Zaloguj się przez e-mail",
+    "signInWithEmail": "Zaloguj się przez e-mail",
+    "signInWithGoogle": "Zaloguj się przez Google",
+    "signInWithMicrosoft": "Zaloguj się przez Microsoft",
+    "signInWithDiscord": "Zaloguj się przez Discord",
+    "signInWithGitHub": "Zaloguj się przez GitHub",
+    "orSeparator": "Lub kontynuuj z"
+  },
+  "localization": {
+    "changeLanguage": "Zmień język"
+  },
+  "theme": {
+    "changeTheme": "Zmień motyw",
+    "lightTheme": "Jasny",
+    "darkTheme": "Ciemny",
+    "systemTheme": "Systemowy"
+  },
+  "common": {
+    "toggleSidebar": "Przelącz pasek boczny"
+  }
+}

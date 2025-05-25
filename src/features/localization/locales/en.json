@@ -1,0 +1,27 @@
+{
+  "auth": {
+    "signIn": "Sign In",
+    "emailLabel": "Email",
+    "emailWrong": "Email is not valid",
+    "loginFailed": "Failed to log in",
+    "signInWithEmail": "Sign in with email",
+    "emailButton": "Sign in with email",
+    "signInWithGoogle": "Sign in with Google",
+    "signInWithMicrosoft": "Sign in with Microsoft",
+    "signInWithDiscord": "Sign in with Discord",
+    "signInWithGitHub": "Sign in with GitHub",
+    "orSeparator": "Or continue with"
+  },
+  "localization": {
+    "changeLanguage": "Change language"
+  },
+  "theme": {
+    "changeTheme": "Change theme",
+    "lightTheme": "Light",
+    "darkTheme": "Dark",
+    "systemTheme": "System"
+  },
+  "common": {
+    "toggleSidebar": "Toggle sidebar"
+  }
+}

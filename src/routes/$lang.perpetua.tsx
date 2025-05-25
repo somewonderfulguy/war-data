@@ -7,10 +7,10 @@ export const Route = createFileRoute('/$lang/perpetua')({
 
 function PerpetuaPage() {
   const { t } = useTranslation()
-  
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-[#282c34] text-white">
-      <h1 className="text-4xl mb-4">{t('welcome')}</h1>
+      <h1 className="mb-4 text-4xl">{t('localization.changeLanguage')}</h1>
       <p>Perpetua</p>
     </div>
   )

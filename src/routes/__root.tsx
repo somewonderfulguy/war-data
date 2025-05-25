@@ -2,8 +2,8 @@ import { HeadContent, Outlet, Scripts, createRootRouteWithContext } from '@tanst
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
-import { languageMiddleware } from '../middleware/language'
-import '../i18n'
+import { localeRedirect } from '../features/localization/utils/localeRedirect'
+import '../features/localization/langSetup'
 import appCss from '../styles/globals.css?url'
 
 import type { QueryClient } from '@tanstack/react-query'
@@ -12,11 +12,8 @@ interface MyRouterContext {
   queryClient: QueryClient
 }
 
-export const Route = createRootRouteWithContext<MyRouterContext>()({  
-  beforeLoad: ({ location }) => {
-    // Apply language middleware for all routes
-    return languageMiddleware(location.pathname)
-  },
+export const Route = createRootRouteWithContext<MyRouterContext>()({
+  beforeLoad: ({ location }) => localeRedirect(location.pathname),
   head: () => ({
     meta: [
       {

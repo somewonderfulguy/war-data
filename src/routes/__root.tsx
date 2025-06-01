@@ -6,35 +6,37 @@ import {
 } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-
-import { localeRedirect } from '../features/localization/utils/localeRedirect'
-import '../features/localization/langSetup'
-import appCss from '../styles/globals.css?url'
-
+import { useLayoutEffect, type ReactNode } from 'react'
 import type { QueryClient } from '@tanstack/react-query'
+import { useTranslation } from 'react-i18next'
+
+import {
+  DEFAULT_LANGUAGE,
+  type Language,
+  localeRedirect,
+  savePreferredLanguage,
+} from '@/features/localization'
+import '@/features/localization/langSetup'
+import appCss from '@/styles/globals.css?url'
+
+const getLangFromParams = (params: Record<string, string>) => {
+  const lang = (params as { lang?: Language }).lang
+  return lang ?? null
+}
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   {
-    beforeLoad: ({ location }) => localeRedirect(location.pathname),
+    beforeLoad: ({ params }) => {
+      const lang = getLangFromParams(params)
+      localeRedirect(lang)
+    },
     head: () => ({
       meta: [
-        {
-          charSet: 'utf-8',
-        },
-        {
-          name: 'viewport',
-          content: 'width=device-width, initial-scale=1',
-        },
-        {
-          title: 'TanStack Start Starter',
-        },
+        { charSet: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { title: 'War Data' },
       ],
-      links: [
-        {
-          rel: 'stylesheet',
-          href: appCss,
-        },
-      ],
+      links: [{ rel: 'stylesheet', href: appCss }],
     }),
 
     component: () => (
@@ -47,9 +49,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   },
 )
 
-function RootDocument({ children }: { children: React.ReactNode }) {
+type Props = { children: ReactNode }
+
+function RootDocument({ children }: Props) {
+  const params = Route.useParams()
+  const urlLang = getLangFromParams(params)
+  const {
+    i18n: { language: currentLanguage },
+  } = useTranslation()
+
+  useLayoutEffect(() => {
+    if (urlLang && urlLang !== currentLanguage) {
+      savePreferredLanguage(urlLang)
+    }
+  }, [urlLang])
+
   return (
-    <html lang="en">
+    <html lang={urlLang ?? DEFAULT_LANGUAGE}>
       <head>
         <HeadContent />
       </head>

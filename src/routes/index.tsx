@@ -1,14 +1,14 @@
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
 
 import { getPreferredLanguage } from '@/features/localization/utils/getPreferredLanguage'
 
 export const Route = createFileRoute('/')({
-  beforeLoad: () => {
+  component: () => {
     const preferredLang = getPreferredLanguage()
-    throw redirect({
+    const navigate = useNavigate()
+    navigate({
       to: '/$lang/perpetua',
       params: { lang: preferredLang },
     })
   },
-  component: () => null,
 })

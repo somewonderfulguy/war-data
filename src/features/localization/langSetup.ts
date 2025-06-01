@@ -2,11 +2,15 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 
-import { DEFAULT_LANGUAGE } from './constants/localizationConstants'
-import enTranslation from './locales/en.json'
-import jpTranslation from './locales/jp.json'
-import uaTranslation from './locales/ua.json'
-import plTranslation from './locales/pl.json'
+import {
+  DEFAULT_LANGUAGE,
+  LANG_STORAGE_KEY,
+  LANG_COOKIE_NAME,
+} from './constants/localizationConstants'
+import { enTranslation } from './locales/en'
+import { jpTranslation } from './locales/jp'
+import { uaTranslation } from './locales/ua'
+import { plTranslation } from './locales/pl'
 
 export default i18n
   .use(LanguageDetector)
@@ -19,11 +23,16 @@ export default i18n
       pl: { translation: plTranslation },
     },
     fallbackLng: DEFAULT_LANGUAGE,
+    load: 'currentOnly',
     interpolation: {
-      escapeValue: false, // React already escapes values
+      escapeValue: false,
     },
     detection: {
-      order: ['path', 'navigator'],
+      order: ['path', 'cookie', 'localStorage', 'navigator'],
       lookupFromPathIndex: 0,
+      lookupCookie: LANG_COOKIE_NAME,
+      lookupLocalStorage: LANG_STORAGE_KEY,
+      caches: ['localStorage', 'cookie'],
     },
+    debug: true,
   })

@@ -5,12 +5,11 @@ import zod from 'zod'
  */
 export const createLocalizationSchema = <T extends zod.ZodRawShape>(
   featureSchema: T,
-) => {
-  return zod
+) =>
+  zod
     .object({
       common: zod.object({
         toggleSidebar: zod.string(),
       }),
     })
     .extend(featureSchema)
-}

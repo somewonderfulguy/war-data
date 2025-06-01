@@ -1,0 +1,27 @@
+export const jpTranslation = {
+  auth: {
+    signIn: 'サインイン',
+    emailLabel: 'メールアドレス',
+    emailWrong: 'メールアドレスが無効です',
+    loginFailed: 'ログインに失敗しました',
+    signInWithEmail: 'メールアドレスでサインイン',
+    emailButton: 'メールアドレスでサインイン',
+    signInWithGoogle: 'Googleでサインイン',
+    signInWithMicrosoft: 'Microsoftでサインイン',
+    signInWithDiscord: 'Discordでサインイン',
+    signInWithGitHub: 'GitHubでサインイン',
+    orSeparator: 'または以下の方法で続行',
+  },
+  localization: {
+    changeLanguage: '言語を変更',
+  },
+  theme: {
+    changeTheme: 'テーマを変更',
+    lightTheme: 'ライト',
+    darkTheme: 'ダーク',
+    systemTheme: 'システム',
+  },
+  common: {
+    toggleSidebar: 'サイドバーを切り替え',
+  },
+}

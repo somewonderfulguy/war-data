@@ -1,2 +1,3 @@
 export * from './ChangeLocaleControl'
-export * from './RedirectLang'
+export * from './LangLayout'
+export * from './RootLangRedirect'

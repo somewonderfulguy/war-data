@@ -1,8 +1,8 @@
 import { createFileRoute, notFound, Outlet } from '@tanstack/react-router'
 import { useTranslation } from 'react-i18next'
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 
-import { isValidLanguage } from '../features/localization/utils/isValidLanguage'
+import { isValidLanguage } from '@/features/localization/utils/isValidLanguage'
 
 export const Route = createFileRoute('/$lang')({
   parseParams: (params) => {
@@ -19,7 +19,7 @@ function LangLayout() {
   const { lang } = Route.useParams()
   const { i18n } = useTranslation()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (i18n.language !== lang) {
       i18n.changeLanguage(lang)
     }

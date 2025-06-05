@@ -1,3 +1,4 @@
+import { Link } from '@/features/localization/components/Link'
 import { createFileRoute } from '@tanstack/react-router'
 import { useTranslation } from 'react-i18next'
 
@@ -12,6 +13,7 @@ function PerpetuaPage() {
     <div className="flex min-h-screen flex-col items-center justify-center bg-[#282c34] text-white">
       <h1 className="mb-4 text-4xl">{t('localization.changeLanguage')}</h1>
       <p>Perpetua</p>
+      <Link to="/perpetua">Perpetua</Link>
     </div>
   )
 }

@@ -6,7 +6,7 @@ import {
 } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { useLayoutEffect, type ReactNode } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import type { QueryClient } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 
@@ -58,11 +58,18 @@ function RootDocument({ children }: Props) {
     i18n: { language: currentLanguage },
   } = useTranslation()
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (urlLang && urlLang !== currentLanguage) {
       savePreferredLanguage(urlLang)
     }
   }, [urlLang])
+
+  // FIXME: wait until server components or proper middleware supported by TanStack Start
+  // brute disable of ssr to allow i18next to initialize
+  const [init, setInit] = useState(false)
+  useEffect(() => {
+    setInit(true)
+  }, [])
 
   return (
     <html lang={urlLang ?? DEFAULT_LANGUAGE}>
@@ -70,7 +77,7 @@ function RootDocument({ children }: Props) {
         <HeadContent />
       </head>
       <body>
-        {children}
+        {init && children}
         <Scripts />
       </body>
     </html>

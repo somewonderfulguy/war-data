@@ -34,5 +34,5 @@ export default i18n
       lookupLocalStorage: LANG_STORAGE_KEY,
       caches: ['localStorage', 'cookie'],
     },
-    debug: true,
+    // debug: true,
   })
